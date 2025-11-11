@@ -84,7 +84,7 @@ export default function CarList() {
   return (
     <section
       id="fleet"
-      className="relative py-32 px-6 bg-black text-white overflow-hidden"
+      className="relative py-32 px-6 bg-[#1B2A52] text-white overflow-hidden"
     >
       {/* Background gradients */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3" />
@@ -114,7 +114,7 @@ export default function CarList() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A52]/90 via-[#1B2A52]/50 to-transparent"></div>
 
                 {/* Car Info on image */}
                 <div className="absolute bottom-0 left-0 p-6 z-10">
