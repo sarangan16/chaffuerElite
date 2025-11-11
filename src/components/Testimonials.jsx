@@ -33,61 +33,59 @@ export default function Testimonials() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 6000); // 6s per slide
+    }, 7000); // 7 seconds per slide
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
   return (
-    <section className="relative bg-white py-32 overflow-hidden">
-      {/* Gradient background accents */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-amber-100/50 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-gray-100/80 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
+    <section className="relative bg-white py-28">
+      {/* Subtle decorative gradient blobs */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-200/50 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-gray-200/40 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-amber-600 via-amber-400 to-gray-900 bg-clip-text text-transparent">
-          Client Testimonials
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
+          What Our Clients Say
         </h2>
-        <p className="text-gray-600 text-lg mb-20 max-w-2xl mx-auto">
-          Stories from those who trusted us to redefine their travel experience.
+        <p className="text-gray-600 text-lg mb-16">
+          Trusted by clients who expect the best in luxury travel.
         </p>
 
-        {/* Testimonial Carousel */}
-        <div className="relative h-64 md:h-72">
+        {/* Carousel */}
+        <div className="relative h-56 md:h-64">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 ease-in-out ${
+              className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 ${
                 i === current
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10 pointer-events-none"
+                  : "opacity-0 translate-y-6 pointer-events-none"
               }`}
             >
-              <p className="text-gray-700 text-xl md:text-2xl italic mb-8 leading-relaxed max-w-2xl">
+              <p className="text-gray-800 text-lg md:text-xl italic mb-4 md:mb-6 max-w-xl leading-relaxed">
                 “{t.text}”
               </p>
-
-              <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-2">
                 {Array.from({ length: t.rating }).map((_, idx) => (
                   <Star
                     key={idx}
-                    className="w-5 h-5 text-amber-500 fill-amber-500"
+                    className="w-4 h-4 text-yellow-500 fill-yellow-500 mx-0.5"
                   />
                 ))}
               </div>
-
-              <p className="font-semibold text-gray-900 text-lg">— {t.name}</p>
+              <p className="font-semibold text-gray-900">{t.name}</p>
             </div>
           ))}
         </div>
 
-        {/* Dots */}
-        <div className="flex justify-center mt-10 space-x-3">
+        {/* Navigation Dots */}
+        <div className="flex justify-center mt-10 space-x-2">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                current === i ? "bg-amber-500 w-5" : "bg-gray-300"
+                current === i ? "bg-yellow-500 w-4 h-4" : "bg-gray-300"
               }`}
             />
           ))}
