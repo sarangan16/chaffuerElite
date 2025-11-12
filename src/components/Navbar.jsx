@@ -10,9 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const navRef = useRef(null);
-  const linkRefs = useRef([]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -27,7 +25,6 @@ export default function Navbar() {
       { y: -120, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }
     );
-
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: "body",
@@ -51,14 +48,10 @@ export default function Navbar() {
 
   const phoneNumber = "+44 12 3456 7890";
 
-  // Smooth scroll for desktop & mobile links
-  const handleScroll = (e, href) => {
-    e.preventDefault();
+  const handleScroll = (id) => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setIsOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
   };
 
   return (
@@ -70,34 +63,32 @@ export default function Navbar() {
           : "bg-[#1B2A52]/70 backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
         {/* LOGO */}
         <a
           href="#hero"
-          onClick={(e) => handleScroll(e, "#hero")}
+          onClick={(e) => {
+            e.preventDefault();
+            handleScroll("#hero");
+          }}
           className="flex items-center gap-2"
         >
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent">
-            ChaffuerElite
+            Crown Chauffeur
           </h1>
         </a>
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center space-x-12 font-medium text-gray-100">
-          {menuItems.map((item, i) => (
-            <a
+          {menuItems.map((item) => (
+            <button
               key={item.label}
-              href={item.href}
-              ref={(el) => (linkRefs.current[i] = el)}
-              onClick={(e) => handleScroll(e, item.href)}
               className="relative text-lg hover:text-yellow-400 transition-colors duration-300"
+              onClick={() => handleScroll(item.href)}
             >
               {item.label}
-              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-yellow-500 transition-all duration-300 group-hover:w-full" />
-            </a>
+            </button>
           ))}
-
-          {/* CALL NOW BUTTON */}
           <a
             href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
             className="ml-6 flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:shadow-yellow-400/50 transition-all duration-300"
@@ -123,32 +114,32 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU */}
-      {isOpen && (
-        <div className="md:hidden bg-[#1B2A52]/95 backdrop-blur-md shadow-2xl">
-          <div className="flex flex-col items-center space-y-4 py-6 font-medium text-gray-100">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleScroll(e, item.href)}
-                className="text-lg hover:text-yellow-400 transition"
-              >
-                {item.label}
-              </a>
-            ))}
-
-            {/* Mobile Call Button */}
-            <a
-              href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:scale-105 transition"
+      <div
+        className={`md:hidden fixed top-[64px] left-0 w-full bg-[#1B2A52]/95 backdrop-blur-md shadow-2xl transition-all duration-300 overflow-hidden ${
+          isOpen
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col items-center space-y-4 py-6 font-medium text-gray-100 px-4">
+          {menuItems.map((item) => (
+            <button
+              key={item.label}
+              className="text-lg w-full text-left hover:text-yellow-400 transition"
+              onClick={() => handleScroll(item.href)}
             >
-              <Phone className="w-5 h-5" />
-              <span>{phoneNumber}</span>
-            </a>
-          </div>
+              {item.label}
+            </button>
+          ))}
+          <a
+            href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
+            className="flex items-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:scale-105 transition"
+          >
+            <Phone className="w-5 h-5" />
+            <span>{phoneNumber}</span>
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
