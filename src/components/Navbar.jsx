@@ -44,12 +44,22 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: "HOME", href: "#home" },
-    { label: "CARS", href: "#cars" },
-    { label: "CONTACT", href: "#contact" },
+    { label: "HOME", href: "#hero" },
+    { label: "CARS", href: "#fleet" },
+    { label: "WHY US", href: "#why-choose-us" },
   ];
 
   const phoneNumber = "+44 12 3456 7890";
+
+  // Smooth scroll for desktop & mobile links
+  const handleScroll = (e, href) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav
@@ -62,9 +72,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
         {/* LOGO */}
-        <a href="#home" className="flex items-center gap-2">
+        <a
+          href="#hero"
+          onClick={(e) => handleScroll(e, "#hero")}
+          className="flex items-center gap-2"
+        >
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent">
-            Crown Chauffeur
+            ChaffuerElite
           </h1>
         </a>
 
@@ -75,6 +89,7 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               ref={(el) => (linkRefs.current[i] = el)}
+              onClick={(e) => handleScroll(e, item.href)}
               className="relative text-lg hover:text-yellow-400 transition-colors duration-300"
             >
               {item.label}
@@ -115,7 +130,7 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleScroll(e, item.href)}
                 className="text-lg hover:text-yellow-400 transition"
               >
                 {item.label}
