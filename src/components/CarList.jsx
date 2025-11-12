@@ -14,6 +14,8 @@ const cars = [
     rate: 120,
     seats: 3,
     luggage: 2,
+    amenities: ["Wi-Fi", "Phone Charger", "Bottled Water"],
+    features: ["Spacious legroom", "Comfortable ride"],
     img: "https://images.unsplash.com/photo-1629019879059-2a0345f93aea?auto=format&fit=crop&q=80&w=1200",
   },
   {
@@ -22,6 +24,8 @@ const cars = [
     rate: 180,
     seats: 3,
     luggage: 2,
+    amenities: ["Wi-Fi", "Phone Charger", "Bottled Water"],
+    features: ["Luxury interior", "Silent ride"],
     img: "https://images.unsplash.com/photo-1694895996049-f9e356afddd8?auto=format&fit=crop&q=80&w=1200",
   },
   {
@@ -30,6 +34,8 @@ const cars = [
     rate: 250,
     seats: 3,
     luggage: 2,
+    amenities: ["Wi-Fi", "Mini Bar", "Bottled Water"],
+    features: ["Spacious legroom", "Premium entertainment system"],
     img: "https://images.unsplash.com/photo-1679506640617-e429ddc31e52?auto=format&fit=crop&q=80&w=1200",
   },
   {
@@ -38,6 +44,8 @@ const cars = [
     rate: 220,
     seats: 4,
     luggage: 4,
+    amenities: ["Wi-Fi", "Phone Charger", "Bottled Water"],
+    features: ["Spacious boot", "Comfortable ride"],
     img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200",
   },
   {
@@ -46,7 +54,9 @@ const cars = [
     rate: 200,
     seats: 6,
     luggage: 5,
-    img: "https://images.unsplash.com/photo-1594495894542-a46cc73e081a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1742", // ✅ fixed image
+    amenities: ["Wi-Fi", "Phone Charger"],
+    features: ["Spacious interior", "Family-friendly"],
+    img: "https://images.unsplash.com/photo-1594495894542-a46cc73e081a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1742",
   },
   {
     name: "9 Seater",
@@ -54,6 +64,8 @@ const cars = [
     rate: 220,
     seats: 8,
     luggage: 6,
+    amenities: ["Wi-Fi", "Phone Charger"],
+    features: ["Spacious interior", "Perfect for groups"],
     img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1200",
   },
 ];
@@ -62,7 +74,7 @@ export default function CarList() {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    // ensure initial visibility
+    // initial visibility
     gsap.set(cardsRef.current, { opacity: 1, y: 0 });
 
     // scroll animation (fade & lift)
@@ -113,7 +125,7 @@ export default function CarList() {
                   alt={car.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                {/* Gradient overlay for text readability */}
+                {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A52]/90 via-[#1B2A52]/50 to-transparent"></div>
 
                 {/* Car Info on image */}
@@ -125,8 +137,8 @@ export default function CarList() {
                 </div>
               </div>
 
-              {/* Details below image */}
-              <div className="p-6 pt-4 flex flex-col gap-4">
+              {/* Details */}
+              <div className="p-6 pt-4 flex flex-col gap-3">
                 <div className="flex items-center justify-between text-gray-300">
                   <div className="flex items-center gap-2">
                     <Users size={18} className="text-yellow-400" />
@@ -138,18 +150,35 @@ export default function CarList() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <p className="text-lg">
-                    from{" "}
-                    <span className="text-white font-semibold">
-                      £{car.rate}
-                    </span>{" "}
-                    <span className="text-gray-400 text-sm">per hour</span>
-                  </p>
-                  <button className="px-5 py-2 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300">
-                    Book Now
-                  </button>
+                {/* Amenities */}
+                <div className="flex flex-wrap gap-2 text-xs text-gray-200 mt-2">
+                  {car.amenities.map((a) => (
+                    <span
+                      key={a}
+                      className="bg-yellow-500/20 px-2 py-1 rounded-full"
+                    >
+                      {a}
+                    </span>
+                  ))}
                 </div>
+
+                {/* Features */}
+                <div className="flex flex-wrap gap-2 text-xs text-gray-300 mt-1">
+                  {car.features.map((f) => (
+                    <span
+                      key={f}
+                      className="bg-white/10 px-2 py-1 rounded-full"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="text-lg mt-2">
+                  from{" "}
+                  <span className="text-white font-semibold">£{car.rate}</span>{" "}
+                  <span className="text-gray-400 text-sm">per hour</span>
+                </p>
               </div>
             </div>
           ))}

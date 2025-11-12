@@ -17,7 +17,28 @@ export const AIRPORT_FEES = {
   BIRMINGHAM: { dropoff: 5.0, pickup: 5.0 },
   BRISTOL: { dropoff: 5.0, pickup: 5.0 },
   EDINBURGH: { dropoff: 5.0, pickup: 5.0 },
+  GLASGOW: { dropoff: 5.0, pickup: 5.0 },
+  BELFAST: { dropoff: 5.0, pickup: 5.0 },
+  NEWCASTLE: { dropoff: 5.0, pickup: 5.0 },
+  LEEDS_BRADFORD: { dropoff: 5.0, pickup: 5.0 },
 };
+
+// ✅ All UK Airports (for dropdowns)
+export const AIRPORT_LOCATIONS = [
+  "Heathrow Airport (LHR)",
+  "Gatwick Airport (LGW)",
+  "Stansted Airport (STN)",
+  "Luton Airport (LTN)",
+  "London City Airport (LCY)",
+  "Manchester Airport (MAN)",
+  "Birmingham Airport (BHX)",
+  "Bristol Airport (BRS)",
+  "Edinburgh Airport (EDI)",
+  "Glasgow Airport (GLA)",
+  "Belfast International Airport (BFS)",
+  "Newcastle Airport (NCL)",
+  "Leeds Bradford Airport (LBA)",
+];
 
 // --- Congestion Charge zone (outward codes) ---
 export const CONGESTION_ZONE_POSTCODES = [
@@ -43,4 +64,8 @@ export const AIRPORT_POSTCODES = {
   BIRMINGHAM: ["B26"],
   BRISTOL: ["BS48"],
   EDINBURGH: ["EH12"],
+  GLASGOW: ["PA3"],
+  BELFAST: ["BT29"],
+  NEWCASTLE: ["NE13"],
+  LEEDS_BRADFORD: ["LS19"],
 };
