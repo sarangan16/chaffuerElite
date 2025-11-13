@@ -9,22 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
-    icon: <Clock className="w-10 h-10 text-yellow-400" />,
+    icon: Clock,
     title: "24/7 Concierge",
     desc: "Round-the-clock English & German support for your comfort and reliability.",
   },
   {
-    icon: <Shield className="w-10 h-10 text-yellow-400" />,
+    icon: Shield,
     title: "Full Insurance",
     desc: "Enjoy total peace of mind with full coverage and zero excess on all rides.",
   },
   {
-    icon: <Plane className="w-10 h-10 text-yellow-400" />,
+    icon: Plane,
     title: "Airport VIP",
     desc: "Meet & greet, flight tracking, and professional airport transfers across the UK.",
   },
   {
-    icon: <PoundSterling className="w-10 h-10 text-yellow-400" />,
+    icon: PoundSterling,
     title: "Transparent Pricing",
     desc: "No hidden fees — fixed, all-inclusive GBP rates for every journey.",
   },
@@ -67,23 +67,29 @@ export default function WhyChooseUs() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((f, i) => (
-            <div
-              key={i}
-              ref={(el) => (cardsRef.current[i] = el)}
-              className="group relative bg-[#1B2A52]/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-lg hover:shadow-yellow-500/20 transition-all duration-500 p-8 flex flex-col items-center text-center"
-            >
-              <div className="mb-5 p-5 rounded-full bg-yellow-500/20 group-hover:bg-yellow-400 transition-all duration-300 flex items-center justify-center shadow-inner transform group-hover:scale-110">
-                {f.icon}
+          {features.map((f, i) => {
+            const Icon = f.icon; // dynamic icon
+            return (
+              <div
+                key={i}
+                ref={(el) => (cardsRef.current[i] = el)}
+                className="group relative bg-[#1B2A52]/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-lg hover:shadow-yellow-500/20 transition-all duration-500 p-8 flex flex-col items-center text-center"
+              >
+                {/* Icon wrapper */}
+                <div className="mb-5 p-5 rounded-full bg-yellow-500/20 group-hover:bg-white transition-all duration-300 flex items-center justify-center shadow-inner transform group-hover:scale-110">
+                  {/* Icon color changes on hover */}
+                  <Icon className="w-10 h-10 text-yellow-400 group-hover:text-black transition-colors duration-300" />
+                </div>
+
+                <h3 className="text-lg md:text-xl font-semibold text-white mb-3">
+                  {f.title}
+                </h3>
+                <p className="text-gray-200 text-sm md:text-base leading-relaxed">
+                  {f.desc}
+                </p>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-3">
-                {f.title}
-              </h3>
-              <p className="text-gray-200 text-sm md:text-base leading-relaxed">
-                {f.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

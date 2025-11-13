@@ -1,4 +1,3 @@
-// src/components/Hero.jsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -13,7 +12,7 @@ export default function Hero() {
   const titleRef = useRef(null);
   const carRef = useRef(null);
   const ctaRef = useRef(null);
-  const formStickyRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,7 +24,7 @@ export default function Hero() {
       function animateHero(isMobile) {
         const lines = titleRef.current?.children;
 
-        // Heading animation
+        // Animate headline
         if (lines?.[0]) {
           gsap.fromTo(
             lines[0],
@@ -41,7 +40,7 @@ export default function Hero() {
           );
         }
 
-        // Tagline animation
+        // Animate tagline
         if (lines?.[1]) {
           gsap.fromTo(
             lines[1],
@@ -76,7 +75,7 @@ export default function Hero() {
           }
         );
 
-        // Scroll-triggered parallax tilt
+        // Parallax tilt while scrolling
         ScrollTrigger.create({
           trigger: heroRef.current,
           start: "top bottom",
@@ -95,7 +94,7 @@ export default function Hero() {
           },
         });
 
-        // CTA glow
+        // CTA glow animation
         gsap.to(ctaRef.current, {
           scale: 1.03,
           boxShadow:
@@ -106,9 +105,9 @@ export default function Hero() {
           ease: "sine.inOut",
         });
 
-        // Booking form fade-in
+        // Form fade-in
         gsap.fromTo(
-          formStickyRef.current,
+          formRef.current,
           { y: 100, opacity: 0, scale: 0.97 },
           {
             y: 0,
@@ -129,29 +128,31 @@ export default function Hero() {
     <section
       ref={heroRef}
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-[120px] md:pt-[160px] pb-32 md:pb-48 overflow-visible"
-      style={{ scrollMarginTop: "100px", backgroundColor: "#0B1D3A" }} // Deep royal navy
+      className="relative min-h-screen flex flex-col items-center justify-center pt-[120px] md:pt-[160px] pb-32 md:pb-44 overflow-visible"
+      style={{ scrollMarginTop: "100px", backgroundColor: "#0B1D3A" }}
     >
-      {/* Light Orbs */}
+      {/* Soft glowing background lights */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-yellow-500/25 via-amber-500/10 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-yellow-500/25 via-amber-500/10 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
 
-      {/* Content */}
-      <div className="relative z-20 w-full max-w-7xl px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Text */}
+      {/* Hero text & car */}
+      <div className="relative z-20 w-full max-w-7xl px-4 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div ref={titleRef} className="space-y-8 text-center lg:text-left">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-widest uppercase">
             Chauffeur Concierge
           </h2>
+
           <div className="h-1.5 w-40 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 mx-auto lg:mx-0 rounded-full" />
+
           <p className="text-lg sm:text-xl text-gray-200 font-light tracking-wide max-w-xl mx-auto lg:mx-0">
             <span className="text-yellow-400 font-semibold">Door-to-door</span>{" "}
             • Professional driver • 24/7 • Full discretion
           </p>
+
           <button
             ref={ctaRef}
             onClick={() => {
-              const form = formStickyRef.current;
+              const form = formRef.current;
               if (form) {
                 const yOffset = -120;
                 const y =
@@ -167,7 +168,6 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Car Image */}
         <div className="flex justify-center items-end">
           <img
             ref={carRef}
@@ -182,12 +182,13 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Booking Form */}
+      {/* Booking Form section */}
       <div
-        ref={formStickyRef}
-        className="relative w-full max-w-6xl mx-auto px-6 mt-32 md:mt-44"
+        ref={formRef}
+        className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 mt-24 md:mt-40"
       >
-        <div className="bg-white/10 backdrop-blur-3xl rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-8">
+        {/* Cleaner, thinner padding — form feels bigger */}
+        <div className="border border-yellow-500/50 rounded-2xl p-3 sm:p-4 md:p-5 bg-[#13264C]/50 backdrop-blur-md shadow-xl w-full">
           <BookingForm />
         </div>
       </div>

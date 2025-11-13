@@ -40,28 +40,26 @@ export default function BookingForm() {
   };
 
   return (
-    <section className="py-12 px-4 max-w-3xl mx-auto">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-[#1B2A52]/80 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-lg space-y-4"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-yellow-500 to-amber-400 bg-clip-text text-transparent">
+    <section className="py-10 px-4 flex justify-center">
+      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
+        {/* Title */}
+        <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-yellow-500 to-amber-400 bg-clip-text text-transparent">
           Book Your Ride
         </h2>
 
         {/* Journey Type */}
-        <div className="space-y-1">
-          <label className="text-gray-300 font-semibold text-sm">
+        <div>
+          <label className="text-gray-200 font-semibold text-sm">
             Journey Type
           </label>
-          <div className="flex gap-2">
+          <div className="flex gap-2 mt-1">
             <button
               type="button"
               onClick={() => setBookingType("airport")}
-              className={`flex-1 p-2.5 rounded-xl font-semibold border text-sm transition ${
+              className={`flex-1 p-3 rounded-xl font-semibold border text-sm transition ${
                 bookingType === "airport"
                   ? "bg-yellow-500 text-black border-yellow-500"
-                  : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
+                  : "bg-transparent border-white/10 text-gray-300 hover:bg-white/10"
               }`}
             >
               <Plane className="inline-block w-4 h-4 mr-1" />
@@ -70,10 +68,10 @@ export default function BookingForm() {
             <button
               type="button"
               onClick={() => setBookingType("oneway")}
-              className={`flex-1 p-2.5 rounded-xl font-semibold border text-sm transition ${
+              className={`flex-1 p-3 rounded-xl font-semibold border text-sm transition ${
                 bookingType === "oneway"
                   ? "bg-yellow-500 text-black border-yellow-500"
-                  : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
+                  : "bg-transparent border-white/10 text-gray-300 hover:bg-white/10"
               }`}
             >
               <ArrowRightLeft className="inline-block w-4 h-4 mr-1" />
@@ -82,14 +80,14 @@ export default function BookingForm() {
           </div>
         </div>
 
-        {/* Airport Transfer Type */}
+        {/* Transfer Type (Airport Only) */}
         {bookingType === "airport" && (
-          <div className="space-y-1">
-            <label className="text-gray-300 font-semibold text-sm">
+          <div>
+            <label className="text-gray-200 font-semibold text-sm">
               Transfer Type
             </label>
-            <div className="flex gap-4">
-              <label className="flex items-center gap-1 cursor-pointer text-gray-200 text-sm">
+            <div className="flex gap-6 mt-1">
+              <label className="flex items-center gap-1 cursor-pointer text-gray-300 text-sm">
                 <input
                   type="radio"
                   name="direction"
@@ -100,7 +98,7 @@ export default function BookingForm() {
                 />
                 Pickup
               </label>
-              <label className="flex items-center gap-1 cursor-pointer text-gray-200 text-sm">
+              <label className="flex items-center gap-1 cursor-pointer text-gray-300 text-sm">
                 <input
                   type="radio"
                   name="direction"
@@ -170,21 +168,21 @@ export default function BookingForm() {
         {/* Date & Time */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label className="text-gray-300 font-semibold text-sm">Date</label>
+            <label className="text-gray-200 font-semibold text-sm">Date</label>
             <input
               type="date"
               value={format(selectedDate, "yyyy-MM-dd")}
               min={format(new Date(), "yyyy-MM-dd")}
               onChange={(e) => setSelectedDate(new Date(e.target.value))}
-              className="w-full px-2.5 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:bg-white/20 transition"
+              className="w-full px-3 py-2 rounded-lg bg-transparent border border-white/20 text-white text-sm focus:bg-white/10 transition"
             />
           </div>
           <div>
-            <label className="text-gray-300 font-semibold text-sm">Time</label>
+            <label className="text-gray-200 font-semibold text-sm">Time</label>
             <select
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className="w-full px-2.5 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:bg-white/20 transition"
+              className="w-full px-3 py-2 rounded-lg bg-transparent border border-white/20 text-white text-sm focus:bg-white/10 transition"
             >
               {Array.from({ length: 48 }, (_, i) => {
                 const h = String(Math.floor(i / 2)).padStart(2, "0");
@@ -200,18 +198,18 @@ export default function BookingForm() {
         </div>
 
         {/* Vehicle Selection */}
-        <div className="space-y-1">
-          <label className="text-gray-300 font-semibold text-sm">Vehicle</label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div>
+          <label className="text-gray-200 font-semibold text-sm">Vehicle</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-1">
             {CAR_CLASSES.map((c) => (
               <button
                 key={c.name}
                 type="button"
                 onClick={() => setCarClass(c.name)}
-                className={`p-2.5 rounded-xl border text-left text-sm transition ${
+                className={`p-3 rounded-xl border text-left text-sm transition ${
                   carClass === c.name
                     ? "bg-yellow-500 text-black border-yellow-500"
-                    : "bg-white/5 border-white/20 text-gray-300 hover:bg-white/10"
+                    : "bg-transparent border-white/20 text-gray-300 hover:bg-white/10"
                 }`}
               >
                 <div className="font-semibold">{c.name}</div>
@@ -222,32 +220,32 @@ export default function BookingForm() {
           </div>
         </div>
 
-        {/* Summary & Fees */}
-        <div className="bg-gradient-to-r from-yellow-600 to-amber-500 p-4 rounded-2xl text-black shadow-lg space-y-1">
-          <div className="flex justify-between text-base font-bold">
+        {/* Fare Summary */}
+        <div className="p-4 rounded-2xl text-white border border-yellow-600/20 bg-white/5 space-y-1">
+          <div className="flex justify-between text-base font-semibold">
             <span>Base Fare</span>
             <span>£{baseRate.toFixed(2)}</span>
           </div>
           {fees.congestion && (
-            <div className="flex justify-between text-xs">
+            <div className="flex justify-between text-xs opacity-80">
               <span>Congestion Charge</span>
               <span>£{fees.congestion.toFixed(2)}</span>
             </div>
           )}
           {fees.ulez && (
-            <div className="flex justify-between text-xs">
+            <div className="flex justify-between text-xs opacity-80">
               <span>ULEZ Charge</span>
               <span>£{fees.ulez.toFixed(2)}</span>
             </div>
           )}
           {fees.airport && (
-            <div className="flex justify-between text-xs">
+            <div className="flex justify-between text-xs opacity-80">
               <span>Airport Fee</span>
               <span>£{fees.airport.toFixed(2)}</span>
             </div>
           )}
-          <hr className="border-black/20 my-1" />
-          <div className="flex justify-between text-lg font-extrabold">
+          <hr className="border-white/10 my-1" />
+          <div className="flex justify-between text-lg font-bold text-yellow-400">
             <span>Total</span>
             <span>£{grandTotal.toFixed(2)}</span>
           </div>
@@ -256,7 +254,7 @@ export default function BookingForm() {
         {/* Confirm Button */}
         <button
           type="submit"
-          className="w-full mt-2 bg-yellow-500 text-black py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-yellow-600 transition text-sm"
+          className="w-full bg-yellow-500 text-black py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-yellow-600 transition text-sm"
         >
           <Phone className="w-4 h-4" />
           Confirm Booking
