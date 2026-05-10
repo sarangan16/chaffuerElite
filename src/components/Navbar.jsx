@@ -63,7 +63,7 @@ export default function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 overflow-hidden ${
         scrolled
           ? "bg-[#1B2A52]/95 backdrop-blur-md shadow-xl"
-          : "bg-[#1B2A52]/70 backdrop-blur-sm"
+          : "bg-transparent"
       }`}
     >
       {/* Outer wrapper ensures no horizontal scroll */}
@@ -78,13 +78,13 @@ export default function Navbar() {
             }}
             className="flex items-center gap-2"
           >
-            <h1 className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent whitespace-nowrap">
+            <h1 className="text-lg md:text-xl font-light tracking-[0.3em] uppercase bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent whitespace-nowrap">
               Chauffeur Elite
             </h1>
           </a>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center space-x-12 font-medium text-gray-100">
+          <div className="hidden md:flex items-center space-x-8 font-medium text-gray-100">
             {menuItems.map((item) => (
               <button
                 key={item.label}
@@ -96,7 +96,7 @@ export default function Navbar() {
             ))}
             <a
               href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
-              className="ml-6 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:shadow-yellow-400/50 transition-all duration-300"
+              className="ml-6 flex items-center gap-2 px-4 py-1.5 border border-yellow-500/60 text-yellow-400 text-xs font-medium tracking-widest rounded-full hover:bg-yellow-500 hover:text-black transition-all duration-300"
             >
               <Phone className="w-5 h-5" />
               <span className="text-xs font-medium tracking-wide">
