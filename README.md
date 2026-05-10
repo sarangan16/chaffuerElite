@@ -1,33 +1,46 @@
 Chauffeur Elite
-Live site → https://chaffuer-elite.vercel.app
+
+Premium chauffeur booking platform built for a UK-based luxury transport client.
+Live Demo → chaffuer-elite.vercel.app
+
+##About
 A chauffeur booking app I built for a client based in the UK. They needed a clean way for customers to book luxury airport transfers and point-to-point rides online, with instant pricing so people know what they're paying before they call.
+The fare calculator picks up London congestion charge and airport fees automatically based on the postcode — so the client doesn't have to explain extra charges over the phone anymore.
+The hero section uses a full-screen looping video background with GSAP-animated text on top. Getting the overlay opacity right so the video stays visible but text stays readable took a few iterations.
 
-What it does
-Customers can pick their journey type (airport transfer or one way), enter their locations, choose a vehicle class and get a price straight away. The fare calculator picks up London congestion charge and airport fees automatically based on the postcode — so the client doesn't have to explain extra charges over the phone anymore.
-The hero section has a car that slides in on load and tilts as you scroll, which took a while to get right on mobile vs desktop. GSAP's matchMedia ended up being the cleanest way to handle that.
+##Features
 
-Built with
+🎬 Full-screen video hero with GSAP text animations
+📍 Smart booking form — airport transfer or one-way journey
+💷 Real-time fare calculator with congestion charge + airport fee detection
+🚗 Fleet section — 6 vehicle classes with scroll-triggered card animations
+✅ Why Choose Us — animated feature cards
+💬 Testimonials carousel with auto-play
+📱 Fully responsive — mobile drawer menu#
 
-React 19 + Vite
-Tailwind CSS
-GSAP + ScrollTrigger
-Lenis (smooth scroll)
-Lucide React
-date-fns
-Deployed on Vercel
-
-Running locally
-bashnpm install
+##Getting Started
+npm install
 npm run dev
 
-Fare calculation
-The booking form calculates the total in real time. Base rate depends on vehicle class (Saloon starts at £120/hr, Luxury at £250/hr). On top of that it checks the postcode against London congestion zone boundaries and adds airport pickup/drop fees for 13 UK airports including Heathrow, Gatwick and Manchester.
+##Build for production:
+npm run build
 
-What's next
-The backend is started (Express + Nodemailer) but not live yet. Plan is to hook up Stripe for payments and send booking confirmations by email. Also looking at using Google Maps API to switch from hourly to distance-based pricing.
+##Fare Calculation
+The booking form calculates the total in real time:
+ItemDetailBase rate£120/hr (Saloon) → £250/hr (Luxury)Congestion charge£15 — detected from EC, WC, W1, SW1 postcodesAirport feePickup/drop fees for 13 UK airports
 
-Structure
+##Project Structure
 src/
-components/ # Navbar, Hero, BookingForm, CarList, WhyChooseUs, Testimonials, Footer
-lib/ # Fare calculation logic and fee constants
-helpers/ # Postcode and address utilities
+├── components/
+│ ├── Navbar.jsx # Fixed nav with mobile drawer
+│ ├── Hero.jsx # Full-screen video hero + booking form
+│ ├── BookingForm.jsx # Journey type, vehicle picker, fare calculator
+│ ├── CarList.jsx # Fleet grid with scroll animations
+│ ├── WhyChooseUs.jsx # Feature cards
+│ ├── Testimonials.jsx # Auto-play review carousel
+│ └── Footer.jsx # Footer with contact and links
+├── lib/
+│ ├── fees.js # Airport and congestion charge constants
+│ └── calculateFees.js # Fee calculation logic
+└── helpers/
+└── location.js # Postcode utilities
