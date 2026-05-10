@@ -28,15 +28,13 @@ export default function Hero() {
         if (lines?.[0]) {
           gsap.fromTo(
             lines[0],
-            { y: 120, opacity: 0, letterSpacing: "0.4em" },
+            { y: 40, opacity: 0, letterSpacing: "0.3em" },
             {
               y: 0,
               opacity: 1,
-              letterSpacing: "0.08em",
-              duration: 1.8,
-              ease: "power3.out",
-              delay: 0.6,
-            }
+              letterSpacing: "0.25em",
+              duration: 1.4,
+            },
           );
         }
 
@@ -51,29 +49,11 @@ export default function Hero() {
               duration: 1.4,
               ease: "power3.out",
               delay: 1,
-            }
+            },
           );
         }
 
         // Car animation
-        gsap.fromTo(
-          carRef.current,
-          {
-            x: isMobile ? 500 : 1000,
-            opacity: 0,
-            rotation: isMobile ? -10 : -15,
-            scale: 0.8,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            rotation: 0,
-            scale: 1,
-            duration: 2,
-            ease: "power3.out",
-            delay: 1,
-          }
-        );
 
         // Parallax tilt while scrolling
         ScrollTrigger.create({
@@ -116,7 +96,7 @@ export default function Hero() {
             duration: 1.2,
             ease: "back.out(1.4)",
             delay: 1.6,
-          }
+          },
         );
       }
     }, heroRef);
@@ -125,28 +105,44 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      ref={heroRef}
-      id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-[120px] md:pt-[160px] pb-32 md:pb-44 overflow-visible"
-      style={{ scrollMarginTop: "100px", backgroundColor: "#0B1D3A" }}
-    >
-      {/* Soft glowing background lights */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-yellow-500/25 via-amber-500/10 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-yellow-500/25 via-amber-500/10 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+    <>
+      <section
+        ref={heroRef}
+        id="hero"
+        className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
+      >
+        {/* Full screen video background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-[#0B1D3A]/50" />
+        </div>
 
-      {/* Hero text & car */}
-      <div className="relative z-20 w-full max-w-7xl px-4 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div ref={titleRef} className="space-y-8 text-center lg:text-left">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-widest uppercase">
-            Chauffeur Concierge
+        {/* Hero text — centered on top of video */}
+        <div
+          ref={titleRef}
+          className="relative z-20 w-full max-w-4xl mx-auto px-6 text-center space-y-6 pt-32"
+        >
+          <p className="text-yellow-400 text-xs tracking-[0.4em] uppercase font-medium">
+            UK Premium Chauffeur Service
+          </p>
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[0.15em] uppercase leading-tight">
+            Travel in{" "}
+            <span className="font-semibold text-yellow-400">Style</span>
           </h2>
 
-          <div className="h-1.5 w-40 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 mx-auto lg:mx-0 rounded-full" />
-
-          <p className="text-lg sm:text-xl text-gray-200 font-light tracking-wide max-w-xl mx-auto lg:mx-0">
-            <span className="text-yellow-400 font-semibold">Door-to-door</span>{" "}
-            • Professional driver • 24/7 • Full discretion
+          <p className="text-gray-300 font-light tracking-wide max-w-xl mx-auto text-base">
+            Airport transfers & corporate travel across the UK.{" "}
+            <span className="text-yellow-400">Available 24/7.</span>
           </p>
 
           <button
@@ -162,36 +158,22 @@ export default function Hero() {
                 window.scrollTo({ top: y, behavior: "smooth" });
               }
             }}
-            className="mt-6 px-6 py-3 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300"
+            className="inline-block px-8 py-2.5 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black text-sm font-semibold rounded-full tracking-widest hover:shadow-yellow-500/50 hover:scale-105 transition-all duration-300"
           >
-            Request Chauffeur
+            Book Your Ride
           </button>
         </div>
+      </section>
 
-        <div className="flex justify-center items-end">
-          <img
-            ref={carRef}
-            src="/images/hero.png"
-            alt="Luxury Chauffeur Car"
-            className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-2xl"
-            style={{ filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.85))" }}
-            onError={(e) => {
-              e.target.src = "https://i.imgur.com/5Qv3n8k.png";
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Booking Form section */}
+      {/* Booking Form */}
       <div
         ref={formRef}
-        className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 mt-24 md:mt-40"
+        className="relative z-20 w-full max-w-5xl mx-auto px-4 mt-16 pb-20"
       >
-        {/* Cleaner, thinner padding — form feels bigger */}
-        <div className="border border-yellow-500/50 rounded-2xl p-3 sm:p-4 md:p-5 bg-[#13264C]/50 backdrop-blur-md shadow-xl w-full">
+        <div className="border border-yellow-500/30 rounded-2xl p-4 md:p-6 bg-[#0B1D3A]/70 backdrop-blur-md shadow-2xl">
           <BookingForm />
         </div>
       </div>
-    </section>
+    </>
   );
 }
