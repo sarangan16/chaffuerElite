@@ -79,7 +79,7 @@ export default function Navbar() {
             className="flex items-center gap-2"
           >
             <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent whitespace-nowrap">
-              Crown Chauffeur
+              Chauffeur Elite
             </h1>
           </a>
 

@@ -15,7 +15,7 @@ export default function Footer() {
           {/* Logo / Brand */}
           <div className="space-y-4">
             <h2 className="text-3xl font-black text-yellow-400 uppercase tracking-wider">
-              Chauffeur UK
+              Chauffeur Elite
             </h2>
             <p className="text-gray-400 max-w-sm">
               Professional chauffeur services across the UK. Luxury, comfort,
@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-yellow-500/30 mt-12 pt-6 text-center text-gray-400 text-sm">
-          &copy; {new Date().getFullYear()} Chauffeur UK. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Chauffeur Elite. All Rights Reserved.
         </div>
       </div>
     </footer>
