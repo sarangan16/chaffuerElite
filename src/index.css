@@ -17,5 +17,6 @@ html.lenis { height: auto; }
 body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
-  background: #f9fafb;
+    background-color: #0B1D3A;
+
 }
