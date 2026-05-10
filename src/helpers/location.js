@@ -1,7 +1,6 @@
-// src/helpers/location.js
 import { AIRPORT_POSTCODES } from "../lib/fees";
 
-// --- Regex validator for UK postcodes ---
+// ---  validator for UK postcodes ---
 export function isValidUKPostcode(s) {
   if (!s) return false;
   const re =
@@ -24,7 +23,7 @@ export function extractPostcode(address) {
 export async function lookupPostcode(postcode) {
   try {
     const res = await fetch(
-      `https://api.postcodes.io/postcodes/${encodeURIComponent(postcode)}`
+      `https://api.postcodes.io/postcodes/${encodeURIComponent(postcode)}`,
     );
     if (!res.ok) return null;
     const json = await res.json();

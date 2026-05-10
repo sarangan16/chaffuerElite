@@ -1,16 +1,33 @@
-# React + Vite
+Chauffeur Elite
+Live site → https://chaffuer-elite.vercel.app
+A chauffeur booking app I built for a client based in the UK. They needed a clean way for customers to book luxury airport transfers and point-to-point rides online, with instant pricing so people know what they're paying before they call.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+What it does
+Customers can pick their journey type (airport transfer or one way), enter their locations, choose a vehicle class and get a price straight away. The fare calculator picks up London congestion charge and airport fees automatically based on the postcode — so the client doesn't have to explain extra charges over the phone anymore.
+The hero section has a car that slides in on load and tilts as you scroll, which took a while to get right on mobile vs desktop. GSAP's matchMedia ended up being the cleanest way to handle that.
 
-Currently, two official plugins are available:
+Built with
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React 19 + Vite
+Tailwind CSS
+GSAP + ScrollTrigger
+Lenis (smooth scroll)
+Lucide React
+date-fns
+Deployed on Vercel
 
-## React Compiler
+Running locally
+bashnpm install
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Fare calculation
+The booking form calculates the total in real time. Base rate depends on vehicle class (Saloon starts at £120/hr, Luxury at £250/hr). On top of that it checks the postcode against London congestion zone boundaries and adds airport pickup/drop fees for 13 UK airports including Heathrow, Gatwick and Manchester.
 
-## Expanding the ESLint configuration
+What's next
+The backend is started (Express + Nodemailer) but not live yet. Plan is to hook up Stripe for payments and send booking confirmations by email. Also looking at using Google Maps API to switch from hourly to distance-based pricing.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Structure
+src/
+components/ # Navbar, Hero, BookingForm, CarList, WhyChooseUs, Testimonials, Footer
+lib/ # Fare calculation logic and fee constants
+helpers/ # Postcode and address utilities

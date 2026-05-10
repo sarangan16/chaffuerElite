@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import BookingForm from "./components/BookingForm";
 import CarList from "./components/CarList";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
@@ -13,6 +12,7 @@ export default function App() {
       <Hero />
       <CarList />
       <WhyChooseUs />
+      <Testimonials />
       <Footer />
     </div>
   );
