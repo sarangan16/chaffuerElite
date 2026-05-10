@@ -12,7 +12,7 @@
 }
 
 html.lenis { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto; }
+html { overflow-x: hidden; }
 
 body {
   font-family: 'Poppins', sans-serif;
