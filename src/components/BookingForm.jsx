@@ -40,23 +40,23 @@ export default function BookingForm() {
   };
 
   return (
-    <section className="py-10 px-4 flex justify-center">
-      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
+    <section className="py-10 px-6 flex justify-center bg-[#0B1D3A]">
+      <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-8">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-yellow-500 to-amber-400 bg-clip-text text-transparent">
+        <h2 className="text-lg font-light text-center tracking-[0.3em] uppercase text-yellow-400">
           Book Your Ride
         </h2>
 
         {/* Journey Type */}
         <div>
-          <label className="text-gray-200 font-semibold text-sm">
+          <label className="text-gray-400 text-xs tracking-widest uppercase">
             Journey Type
           </label>
           <div className="flex gap-2 mt-1">
             <button
               type="button"
               onClick={() => setBookingType("airport")}
-              className={`flex-1 p-3 rounded-xl font-semibold border text-sm transition ${
+              className={`flex-1 py-2 px-4 rounded-lg font-medium border text-xs tracking-widest transition ${
                 bookingType === "airport"
                   ? "bg-yellow-500 text-black border-yellow-500"
                   : "bg-transparent border-white/10 text-gray-300 hover:bg-white/10"
@@ -68,7 +68,7 @@ export default function BookingForm() {
             <button
               type="button"
               onClick={() => setBookingType("oneway")}
-              className={`flex-1 p-3 rounded-xl font-semibold border text-sm transition ${
+              className={`flex-1 p-2 rounded-lg font-medium border text-xs tracking-widest transition  ${
                 bookingType === "oneway"
                   ? "bg-yellow-500 text-black border-yellow-500"
                   : "bg-transparent border-white/10 text-gray-300 hover:bg-white/10"
@@ -83,7 +83,7 @@ export default function BookingForm() {
         {/* Transfer Type (Airport Only) */}
         {bookingType === "airport" && (
           <div>
-            <label className="text-gray-200 font-semibold text-sm">
+            <label className="text-gray-400 text-xs tracking-widest uppercase">
               Transfer Type
             </label>
             <div className="flex gap-6 mt-1">

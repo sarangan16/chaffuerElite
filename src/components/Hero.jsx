@@ -166,13 +166,9 @@ export default function Hero() {
       </section>
 
       {/* Booking Form */}
-      <div
-        ref={formRef}
-        className="relative z-20 w-full max-w-5xl mx-auto px-4 mt-16 pb-20"
-      >
-        <div className="border border-yellow-500/30 rounded-2xl p-4 md:p-6 bg-[#0B1D3A]/70 backdrop-blur-md shadow-2xl">
-          <BookingForm />
-        </div>
+
+      <div className="rounded-2xl p-4 md:p-6 bg-[#0B1D3A] shadow-2xl">
+        <BookingForm />
       </div>
     </>
   );
