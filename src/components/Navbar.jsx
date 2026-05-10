@@ -25,7 +25,7 @@ export default function Navbar() {
     gsap.fromTo(
       nav,
       { y: -120, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
     );
 
     const ctx = gsap.context(() => {
@@ -78,7 +78,7 @@ export default function Navbar() {
             }}
             className="flex items-center gap-2"
           >
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent whitespace-nowrap">
+            <h1 className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent whitespace-nowrap">
               Chauffeur Elite
             </h1>
           </a>
@@ -88,7 +88,7 @@ export default function Navbar() {
             {menuItems.map((item) => (
               <button
                 key={item.label}
-                className="relative text-lg hover:text-yellow-400 transition-colors duration-300"
+                className="relative text-sm tracking-widest hover:text-yellow-400 transition-colors duration-300"
                 onClick={() => handleScroll(item.href)}
               >
                 {item.label}
@@ -96,10 +96,10 @@ export default function Navbar() {
             ))}
             <a
               href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
-              className="ml-6 flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:shadow-yellow-400/50 transition-all duration-300"
+              className="ml-6 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black font-semibold rounded-full shadow-md hover:shadow-yellow-400/50 transition-all duration-300"
             >
               <Phone className="w-5 h-5" />
-              <span className="text-sm md:text-base font-medium">
+              <span className="text-xs font-medium tracking-wide">
                 {phoneNumber}
               </span>
             </a>
