@@ -148,13 +148,10 @@ export default function Hero() {
           <button
             ref={ctaRef}
             onClick={() => {
-              const form = formRef.current;
+              const form = document.getElementById("booking-form");
               if (form) {
-                const yOffset = -120;
                 const y =
-                  form.getBoundingClientRect().top +
-                  window.pageYOffset +
-                  yOffset;
+                  form.getBoundingClientRect().top + window.pageYOffset - 100;
                 window.scrollTo({ top: y, behavior: "smooth" });
               }
             }}

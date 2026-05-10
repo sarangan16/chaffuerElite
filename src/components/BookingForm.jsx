@@ -40,7 +40,10 @@ export default function BookingForm() {
   };
 
   return (
-    <section className="py-10 px-6 flex justify-center bg-[#0B1D3A]">
+    <section
+      id="booking-form"
+      className="py-10 px-6 flex justify-center bg-[#0B1D3A]"
+    >
       <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-8">
         {/* Title */}
         <h2 className="text-lg font-light text-center tracking-[0.3em] uppercase text-yellow-400">
