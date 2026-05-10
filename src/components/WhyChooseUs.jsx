@@ -51,17 +51,17 @@ export default function WhyChooseUs() {
     <section
       ref={sectionRef}
       id="why-choose-us"
-      className="relative bg-gradient-to-b from-[#1B2A52] to-[#15203A] py-28 overflow-hidden"
+      className="relative bg-[#0B1D3A] py-24 overflow-hidden"
     >
       {/* Decorative Blobs */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-500/20 to-transparent rounded-full blur-3xl -translate-x-1/4 -translate-y-1/4 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-yellow-500/20 to-transparent rounded-full blur-3xl translate-x-1/4 translate-y-1/4 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-white">
+        <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-[0.3em] uppercase text-white">
           Why Choose Us
         </h2>
-        <p className="text-gray-300 text-lg md:text-xl mb-16 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-gray-400 text-sm mb-16 max-w-2xl mx-auto leading-relaxed tracking-wide">
           Experience exceptional comfort, reliability, and professionalism in
           every journey.
         </p>
@@ -81,7 +81,7 @@ export default function WhyChooseUs() {
                   <Icon className="w-10 h-10 text-yellow-400 group-hover:text-black transition-colors duration-300" />
                 </div>
 
-                <h3 className="text-lg md:text-xl font-semibold text-white mb-3">
+                <h3 className="text-sm font-semibold text-white mb-3 tracking-widest uppercase">
                   {f.title}
                 </h3>
                 <p className="text-gray-200 text-sm md:text-base leading-relaxed">

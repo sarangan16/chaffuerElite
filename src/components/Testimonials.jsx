@@ -38,21 +38,21 @@ export default function Testimonials() {
   }, [testimonials.length]);
 
   return (
-    <section className="relative bg-white py-28">
+    <section className="relative bg-[#0B1D3A] py-24">
       {/* Subtle decorative gradient blobs */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-200/50 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-gray-200/40 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
+        <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-[0.3em] uppercase text-white">
           What Our Clients Say
         </h2>
-        <p className="text-gray-600 text-lg mb-16">
+        <p className="text-gray-400 text-sm mb-12 tracking-wide">
           Trusted by clients who expect the best in luxury travel.
         </p>
 
         {/* Carousel */}
-        <div className="relative h-56 md:h-64">
+        <div className="relative min-h-[200px] md:min-h-[220px]">
           {testimonials.map((t, i) => (
             <div
               key={i}
@@ -62,7 +62,7 @@ export default function Testimonials() {
                   : "opacity-0 translate-y-6 pointer-events-none"
               }`}
             >
-              <p className="text-gray-800 text-lg md:text-xl italic mb-4 md:mb-6 max-w-xl leading-relaxed">
+              <p className="text-gray-300 text-base italic mb-4 md:mb-6 max-w-xl leading-relaxed">
                 “{t.text}”
               </p>
               <div className="flex justify-center mb-2">
@@ -73,7 +73,9 @@ export default function Testimonials() {
                   />
                 ))}
               </div>
-              <p className="font-semibold text-gray-900">{t.name}</p>
+              <p className="font-semibold text-yellow-400 text-sm tracking-widest">
+                {t.name}
+              </p>
             </div>
           ))}
         </div>

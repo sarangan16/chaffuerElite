@@ -60,7 +60,7 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 overflow-hidden ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 overflow-hidden w-full ${
         scrolled
           ? "bg-[#1B2A52]/95 backdrop-blur-md shadow-xl"
           : "bg-transparent"
@@ -68,7 +68,7 @@ export default function Navbar() {
     >
       {/* Outer wrapper ensures no horizontal scroll */}
       <div className="w-full overflow-x-hidden">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
           {/* LOGO */}
           <a
             href="#hero"
@@ -84,7 +84,7 @@ export default function Navbar() {
           </a>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center space-x-8 font-medium text-gray-100">
+          <div className="hidden md:flex items-center space-x-6 font-medium text-gray-100">
             {menuItems.map((item) => (
               <button
                 key={item.label}
@@ -99,7 +99,7 @@ export default function Navbar() {
               className="ml-6 flex items-center gap-2 px-4 py-1.5 border border-yellow-500/60 text-yellow-400 text-xs font-medium tracking-widest rounded-full hover:bg-yellow-500 hover:text-black transition-all duration-300"
             >
               <Phone className="w-5 h-5" />
-              <span className="text-xs font-medium tracking-wide">
+              <span className="hidden lg:inline text-xs font-medium tracking-wide">
                 {phoneNumber}
               </span>
             </a>
@@ -108,7 +108,7 @@ export default function Navbar() {
           {/* MOBILE TOGGLE */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-full hover:bg-white/20 transition"
+            className="md:hidden p-2 rounded-full hover:bg-white/10 transition z-50 relative"
           >
             {isOpen ? (
               <X className="text-yellow-500" size={28} />
@@ -121,7 +121,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div
-        className={`md:hidden fixed left-0 top-[64px] w-screen overflow-hidden bg-[#1B2A52]/95 backdrop-blur-md shadow-2xl transition-all duration-300 ${
+        className={`md:hidden fixed left-0 top-[64px] w-full overflow-hidden bg-[#0B1D3A]/98 backdrop-blur-md shadow-2xl transition-all duration-300 ${
           isOpen
             ? "max-h-[calc(100vh-64px)] opacity-100"
             : "max-h-0 opacity-0 pointer-events-none"

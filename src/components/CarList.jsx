@@ -96,14 +96,14 @@ export default function CarList() {
   return (
     <section
       id="fleet"
-      className="relative py-32 px-6 bg-[#1B2A52] text-white overflow-hidden"
+      className="relative py-24 px-6 bg-[#0B1D3A] text-white overflow-hidden"
     >
       {/* Background gradients */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
 
       <div className="relative max-w-7xl mx-auto z-10">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 tracking-wider">
+        <h2 className="text-2xl md:text-3xl font-light text-center mb-4 tracking-[0.3em] uppercase text-white">
           Our Premium Fleet
         </h2>
         <p className="text-center text-gray-300 text-lg mb-16 max-w-2xl mx-auto">
@@ -130,7 +130,7 @@ export default function CarList() {
 
                 {/* Car Info on image */}
                 <div className="absolute bottom-0 left-0 p-6 z-10">
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-1">
+                  <h3 className="text-base font-semibold text-yellow-400 mb-1 tracking-widest uppercase">
                     {car.name}
                   </h3>
                   <p className="text-sm text-gray-300 italic">{car.desc}</p>
