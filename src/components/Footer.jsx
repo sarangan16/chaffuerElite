@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#060f1e] text-white relative overflow-hidden border-t border-white/5">
+    <footer className="bg-[#060f1e] text-white relative overflow-hidden border-t border-white/8">
       {/* Gradient light accents */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
