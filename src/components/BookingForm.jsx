@@ -30,7 +30,7 @@ export default function BookingForm() {
     setDropoff("");
   }, [bookingType, direction]);
 
-  const baseRate = getRate(carClass) * 1.5;
+  const baseRate = getRate(carClass);
   const totalFees = Object.values(fees).reduce((a, b) => a + b, 0);
   const grandTotal = baseRate + totalFees;
 
@@ -42,7 +42,7 @@ export default function BookingForm() {
   return (
     <section
       id="booking-form"
-      className="py-10 px-6 flex justify-center bg-[#0B1D3A]"
+      className="py-10 px-6 flex justify-center bg-[#0B1D3A] broder-t border-white/5"
     >
       <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-8">
         {/* Title */}
@@ -97,7 +97,7 @@ export default function BookingForm() {
                   value="pickup"
                   checked={direction === "pickup"}
                   onChange={() => setDirection("pickup")}
-                  className="accent-yellow-500"
+                  className=""
                 />
                 Pickup
               </label>
@@ -108,7 +108,7 @@ export default function BookingForm() {
                   value="drop"
                   checked={direction === "drop"}
                   onChange={() => setDirection("drop")}
-                  className="accent-yellow-500"
+                  className=""
                 />
                 Drop
               </label>
@@ -224,7 +224,7 @@ export default function BookingForm() {
         </div>
 
         {/* Fare Summary */}
-        <div className="p-4 rounded-2xl text-white border border-yellow-600/20 bg-white/5 space-y-1">
+        <div className="p-4 rounded-2xl text-white border border-yellow-500/20 bg-white/5 space-y-2">
           <div className="flex justify-between text-base font-semibold">
             <span>Base Fare</span>
             <span>£{baseRate.toFixed(2)}</span>
@@ -257,7 +257,7 @@ export default function BookingForm() {
         {/* Confirm Button */}
         <button
           type="submit"
-          className="w-full bg-yellow-500 text-black py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-yellow-600 transition text-sm"
+          className="w-full bg-yellow-500 text-black py-3.5 rounded-full font-semibold tracking-widest  text-xs flex items-center justify-center gap-2 hover:bg-yellow-400 transition-all duration-300"
         >
           <Phone className="w-4 h-4" />
           Confirm Booking

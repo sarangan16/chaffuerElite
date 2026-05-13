@@ -25,19 +25,19 @@ export const AIRPORT_FEES = {
 
 // ✅ All UK Airports (for dropdowns)
 export const AIRPORT_LOCATIONS = [
-  "Heathrow Airport (LHR)",
-  "Gatwick Airport (LGW)",
-  "Stansted Airport (STN)",
-  "Luton Airport (LTN)",
-  "London City Airport (LCY)",
-  "Manchester Airport (MAN)",
-  "Birmingham Airport (BHX)",
-  "Bristol Airport (BRS)",
-  "Edinburgh Airport (EDI)",
-  "Glasgow Airport (GLA)",
-  "Belfast International Airport (BFS)",
-  "Newcastle Airport (NCL)",
-  "Leeds Bradford Airport (LBA)",
+  "Heathrow Airport (LHR) TW6",
+  "Gatwick Airport (LGW) RH6",
+  "Stansted Airport (STN) CM24",
+  "Luton Airport (LTN) LU2",
+  "London City Airport (LCY) E16",
+  "Manchester Airport (MAN) M90",
+  "Birmingham Airport (BHX) B26",
+  "Bristol Airport (BRS) BS48",
+  "Edinburgh Airport (EDI) EH12",
+  "Glasgow Airport (GLA) PA3",
+  "Belfast International Airport (BFS) BT29",
+  "Newcastle Airport (NCL) NE13",
+  "Leeds Bradford Airport (LBA) LS19",
 ];
 
 // --- Congestion Charge zone (outward codes) ---

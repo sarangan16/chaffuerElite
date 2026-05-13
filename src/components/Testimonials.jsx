@@ -39,9 +39,8 @@ export default function Testimonials() {
 
   return (
     <section className="relative bg-[#0B1D3A] py-24">
-      {/* Subtle decorative gradient blobs */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-200/50 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-gray-200/40 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0d2147] via-[#0B1D3A] to-[#091729]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a3a6e22_0%,_transparent_70%)]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-[0.3em] uppercase text-white">

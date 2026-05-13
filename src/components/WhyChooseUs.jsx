@@ -51,40 +51,38 @@ export default function WhyChooseUs() {
     <section
       ref={sectionRef}
       id="why-choose-us"
-      className="relative bg-[#0B1D3A] py-24 overflow-hidden"
+      className="relative bg-[#0B1D3A] py-32 px-6"
     >
-      {/* Decorative Blobs */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-500/20 to-transparent rounded-full blur-3xl -translate-x-1/4 -translate-y-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-yellow-500/20 to-transparent rounded-full blur-3xl translate-x-1/4 translate-y-1/4 pointer-events-none" />
+      <div className="max-2-5xl mx-auto">
+        <div className="text-center mb-20">
+          <p className="text-yellow-500 text-xs tracking-[0.4em] uppercase mb-4">
+            Experience exceptional comfort, reliability, and professionalism in
+            every journey.
+          </p>
+          <h2 className="text-3xl font-light tracking-[0.2em] uppercase text-white">
+            Why Choose Us
+          </h2>
+        </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-light mb-4 tracking-[0.3em] uppercase text-white">
-          Why Choose Us
-        </h2>
-        <p className="text-gray-400 text-sm mb-16 max-w-2xl mx-auto leading-relaxed tracking-wide">
-          Experience exceptional comfort, reliability, and professionalism in
-          every journey.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f, i) => {
-            const Icon = f.icon; // dynamic icon
+            const Icon = f.icon;
             return (
               <div
                 key={i}
                 ref={(el) => (cardsRef.current[i] = el)}
-                className="group relative bg-[#1B2A52]/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-lg hover:shadow-yellow-500/20 transition-all duration-500 p-8 flex flex-col items-center text-center"
+                className="flex flex-col items-start p-8 rounded-2xl border border-white/8 bg-white/3 hover:border-yellow-500/30 hover:bg-white/5 transition-all duration-500"
               >
                 {/* Icon wrapper */}
-                <div className="mb-5 p-5 rounded-full bg-yellow-500/20 group-hover:bg-white transition-all duration-300 flex items-center justify-center shadow-inner transform group-hover:scale-110">
+                <div className="mb-6 p-3 rounded-xl bg-yellow-500/10">
                   {/* Icon color changes on hover */}
-                  <Icon className="w-10 h-10 text-yellow-400 group-hover:text-black transition-colors duration-300" />
+                  <Icon className="w-6 h-6 text-yellow-400" />
                 </div>
 
                 <h3 className="text-sm font-semibold text-white mb-3 tracking-widest uppercase">
                   {f.title}
                 </h3>
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed">
+                <p className="text-gray-200 text-sm leading-relaxed">
                   {f.desc}
                 </p>
               </div>
