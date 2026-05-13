@@ -94,91 +94,79 @@ export default function CarList() {
   }, []);
 
   return (
-    <section
-      id="fleet"
-      className="relative py-24 px-6 bg-[#0B1D3A] text-white overflow-hidden"
-    >
-      {/* Background gradients */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-yellow-500/20 via-amber-500/10 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+    <section id="fleet" className="bg-[#0B1D3A] py-32 px-6 text-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <p className="text-yellow-500 text-xs tracking-[0.4em] uppercase mb-4">
+            Travel in Comfort
+          </p>
+          <h2 className="text-3xl font-light tracking-[0.2em] uppercase text-white">
+            Our Premium Fleet
+          </h2>
+        </div>
 
-      <div className="relative max-w-7xl mx-auto z-10">
-        <h2 className="text-2xl md:text-3xl font-light text-center mb-4 tracking-[0.3em] uppercase text-white">
-          Our Premium Fleet
-        </h2>
-        <p className="text-center text-gray-300 text-lg mb-16 max-w-2xl mx-auto">
-          Discover our range of chauffeur-driven vehicles, tailored for every
-          occasion.
-        </p>
-
-        <div className="cars-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {cars.map((car, i) => (
             <div
               key={i}
               ref={(el) => (cardsRef.current[i] = el)}
-              className="group relative rounded-2xl overflow-hidden border border-yellow-500/20 bg-white/5 backdrop-blur-xl hover:border-yellow-500/40 hover:shadow-yellow-500/20 transition-all duration-500"
+              className="group rounded-2xl overflow-hidden border border-white/8 bg-white/3 hover:border-yellow-500/30 transition-all duration-500"
             >
-              {/* Car Image */}
-              <div className="relative h-72 overflow-hidden">
+              {/* Image */}
+              <div className="relative h-56 overflow-hidden">
                 <img
                   src={car.img}
                   alt={car.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A52]/90 via-[#1B2A52]/50 to-transparent"></div>
-
-                {/* Car Info on image */}
-                <div className="absolute bottom-0 left-0 p-6 z-10">
-                  <h3 className="text-base font-semibold text-yellow-400 mb-1 tracking-widest uppercase">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A] via-[#0B1D3A]/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-5">
+                  <h3 className="text-sm font-semibold text-yellow-400 tracking-widest uppercase">
                     {car.name}
                   </h3>
-                  <p className="text-sm text-gray-300 italic">{car.desc}</p>
+                  <p className="text-xs text-gray-400 mt-0.5 italic">
+                    {car.desc}
+                  </p>
                 </div>
               </div>
 
               {/* Details */}
-              <div className="p-6 pt-4 flex flex-col gap-3">
-                <div className="flex items-center justify-between text-gray-300">
+              <div className="p-6 space-y-4">
+                {/* Seats & Bags */}
+                <div className="flex items-center gap-6 text-sm text-gray-400">
                   <div className="flex items-center gap-2">
-                    <Users size={18} className="text-yellow-400" />
+                    <Users size={15} className="text-yellow-400" />
                     <span>{car.seats} Seats</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Briefcase size={18} className="text-yellow-400" />
+                    <Briefcase size={15} className="text-yellow-400" />
                     <span>{car.luggage} Bags</span>
                   </div>
                 </div>
 
                 {/* Amenities */}
-                <div className="flex flex-wrap gap-2 text-xs text-gray-200 mt-2">
+                <div className="flex flex-wrap gap-2">
                   {car.amenities.map((a) => (
                     <span
                       key={a}
-                      className="bg-yellow-500/20 px-2 py-1 rounded-full"
+                      className="text-xs text-yellow-400/80 bg-yellow-500/10 px-3 py-1 rounded-full"
                     >
                       {a}
                     </span>
                   ))}
                 </div>
 
-                {/* Features */}
-                <div className="flex flex-wrap gap-2 text-xs text-gray-300 mt-1">
-                  {car.features.map((f) => (
-                    <span
-                      key={f}
-                      className="bg-white/10 px-2 py-1 rounded-full"
-                    >
-                      {f}
+                {/* Divider */}
+                <div className="border-t border-white/8 pt-4 flex items-center justify-between">
+                  <span className="text-gray-500 text-xs">from</span>
+                  <span className="text-white font-semibold">
+                    £{car.rate}{" "}
+                    <span className="text-gray-500 text-xs font-normal">
+                      /hr
                     </span>
-                  ))}
+                  </span>
                 </div>
-
-                <p className="text-lg mt-2">
-                  from{" "}
-                  <span className="text-white font-semibold">£{car.rate}</span>{" "}
-                  <span className="text-gray-400 text-sm">per hour</span>
-                </p>
               </div>
             </div>
           ))}
